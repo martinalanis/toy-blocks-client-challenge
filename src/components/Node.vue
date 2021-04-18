@@ -15,11 +15,22 @@
           :color="getColor"
         >
           <span class="text-uppercase accordion-status-text">{{ getStatusText }}</span>
-        </v-badge> 
+        </v-badge>
       </div>
     </v-expansion-panel-header>
     <v-expansion-panel-content>
-      <span>Here goes the content</span>
+      <div
+        class="grey lighten-2 mb-1 px-2 py-1 rounded"
+        v-for="list in node.blocks"
+        :key="list.id"
+      >
+        <p class="mb-0 caption blue--text text--darken-4">
+          {{ list.attributes.index }}
+        </p>
+        <p class="mb-0 list-item--data">
+          {{ list.attributes.data }}
+        </p>
+      </div>
     </v-expansion-panel-content>
   </v-expansion-panel>
 </template>
@@ -33,6 +44,7 @@ export default {
       online: Boolean,
       name: String,
       loading: Boolean,
+      blocks: Array
     }
   },
   data: () => ({
@@ -92,6 +104,11 @@ export default {
     letter-spacing: 1.5px;
     color: #263238;
   }
+
+  .list-item--data {
+    font-size: 85%;
+    font-weight: 400;
+  }
 </style>
 
 <style>
@@ -108,6 +125,6 @@ export default {
   @media only screen and (max-width: 442px) {
     .accordion-node .accordion-badge.v-badge--dot .v-badge__badge {
       margin-top: 28px;
-    }  
+    }
   }
 </style>

@@ -9,6 +9,7 @@
             online: item.online,
             url: item.url,
             loading: item.loading,
+            blocks: item.blocks
           }"
           />
       </v-expansion-panels>
